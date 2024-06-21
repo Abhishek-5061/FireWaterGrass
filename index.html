@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Water Grass Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #6a0dad; /* Light grey background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #333; /* Dark grey background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.9); /* Shadow effect */
+            max-width: 600px;
+            margin: 20px;
+            color: #fff; /* Text color */
+        }
+
+        .description {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .choices {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .choice-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            color: #fff;
+        }
+
+        .choice-btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.8;
+        }
+
+        .fire-btn {
+            background-color: #ff5733; /* Fire button color */
+        }
+
+        .water-btn {
+            background-color: #5bc0de; /* Water button color */
+        }
+
+        .grass-btn {
+            background-color: #5cb85c; /* Grass button color */
+        }
+
+        .gesture-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .gesture {
+            width: 150px;
+            height: 150px;
+            margin: 0 10px;
+            display: none; /* Initially hidden */
+        }
+
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fire Water Grass Game</h1>
+        <div class="description">Fire, Water, Grass : where fire beats grass, grass beats water, and water beats fire.</div>
+        <div class="choices">
+            <button class="choice-btn fire-btn" onclick="playGame('fire')">Fire</button>
+            <button class="choice-btn water-btn" onclick="playGame('water')">Water</button>
+            <button class="choice-btn grass-btn" onclick="playGame('grass')">Grass</button>
+        </div>
+        <div class="gesture-container">
+            <img src="fire-hand.svg" alt="Fire gesture" class="gesture" id="fireHand">
+            <img src="water-hand.svg" alt="Water gesture" class="gesture" id="waterHand">
+            <img src="grass-hand.svg" alt="Grass gesture" class="gesture" id="grassHand">
+        </div>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // Function to play the game
+        function playGame(playerChoice) {
+            // Array of computer choices
+            let computerChoices = ['fire', 'water', 'grass'];
+            let computerChoice = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+            
+            // Determine the winner
+            let result;
+            if (playerChoice === computerChoice) {
+                result = "It's a tie!";
+            } else if (
+                (playerChoice === 'fire' && computerChoice === 'grass') ||
+                (playerChoice === 'grass' && computerChoice === 'water') ||
+                (playerChoice === 'water' && computerChoice === 'fire')
+            ) {
+                result = `You win! ${playerChoice} beats ${computerChoice}.`;
+            } else {
+                result = `You lose! ${computerChoice} beats ${playerChoice}.`;
+            }
+            
+            // Display the result
+            document.getElementById('result').textContent = result;
+
+            // Show hand gestures
+            document.getElementById('fireHand').style.display = 'none';
+            document.getElementById('waterHand').style.display = 'none';
+            document.getElementById('grassHand').style.display = 'none';
+
+            if (playerChoice === 'fire') {
+                document.getElementById('fireHand').style.display = 'block';
+            } else if (playerChoice === 'water') {
+                document.getElementById('waterHand').style.display = 'block';
+            } else if (playerChoice === 'grass') {
+                document.getElementById('grassHand').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
