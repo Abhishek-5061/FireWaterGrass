@@ -1,0 +1,111 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    /* background-color: #6a0dad; */
+    background: url('../bg1.jpg') no-repeat center center/cover;
+    animation: animateBg 5s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    
+    
+}
+
+
+.container {
+    text-align: center;
+    background-color: #280d03b1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.968);
+    max-width: 600px;
+    margin: 20px;
+    color: #fff;
+}
+
+.description {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.choice-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    color: #fff;
+}
+
+.choice-btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.8;
+}
+
+.fire-btn {
+    background-color: #ff5733;
+}
+
+.water-btn {
+    background-color: #5bc0de;
+}
+
+.grass-btn {
+    background-color: #5cb85c;
+}
+
+.gesture-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.gesture-box {
+    text-align: center;
+}
+
+.gesture {
+    width: 100px;
+    height: 100px;
+    display: none;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.5s ease;
+}
+
+.gesture.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+#result {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes animateBg{
+    100%{
+        filter: hue-rotate(360deg);
+    }
+}
